@@ -26,7 +26,7 @@ st.title("Automated Test Case Generator")
 
 st.text("Upload Excel file with 2 columns named 'req_id' and 'requirement'")
 st.text("Suggestion: use the req.xlsx file provided in the repository")
-st.markdown("View source code & req.xlsx on[GitHub](https://github.com/yashmantri20/test-case-generation)")
+st.markdown("View source code & req.xlsx on [GitHub](https://github.com/rudra20-6/test-case-generation/)")
 
 # File Upload
 uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
