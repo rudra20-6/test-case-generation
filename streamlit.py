@@ -24,6 +24,8 @@ class StreamlitLogger(io.StringIO):
 # Streamlit UI
 st.title("Automated Test Case Generator")
 
+st.text("Upload Excel file with 2 columns named 'req_id' and 'requirement'")
+st.text("Suggestion: use the req.xlsx file provided in the repository")
 # File Upload
 uploaded_file = st.file_uploader("Upload Excel file", type=["xlsx"])
 
@@ -61,8 +63,9 @@ if uploaded_file is not None:
                 
                 # Provide download link for the generated file
                 filename = f"./generatedTestCases/{res['req_id']}.xlsx"
+                display_name = f"{res['req_id']}.xlsx"
                 if Path(filename).exists():
                     with open(filename, "rb") as file:
-                        st.download_button(label=f"Download {filename}", data=file, file_name=filename, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                        st.download_button(label=f"Download {display_name}", data=file, file_name=display_name, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
         else:
             st.error("An error occurred during processing.")
