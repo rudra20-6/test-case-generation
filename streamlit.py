@@ -1,53 +1,3 @@
-# import streamlit as st
-# import os
-# import pandas as pd
-# from pathlib import Path
-# from pipeline import process_requirements
-
-
-# def main():
-#     os.environ["GOOGLE_API_KEY"] = "AIzaSyCYOURReNyI2g1G2jpEmw2yMj4AgiP9VyM"
-#     print(os.getenv("GOOGLE_API_KEY"))
-#     st.title("Automated Test Case Generator")
-    
-#     st.write("Upload an Excel file containing requirements, and this tool will generate test cases for each requirement using AI.")
-    
-#     uploaded_file = st.file_uploader("Upload Requirements File (Excel)", type=["xlsx"])
-    
-#     if uploaded_file is not None:
-#         # Save uploaded file to a temporary location
-#         temp_file_path = Path("temp_requirements.xlsx")
-#         with open(temp_file_path, "wb") as f:
-#             f.write(uploaded_file.getbuffer())
-        
-#         st.success("File uploaded successfully!")
-        
-#         if st.button("Generate Test Cases"):
-#             st.write("Processing requirements...")
-#             result = process_requirements(str(temp_file_path))
-            
-#             if result:
-#                 st.success("Test cases generated successfully!")
-#                 st.write(f"Processed {len(result['requirements'])} requirements.")
-                
-#                 # Display generated test cases
-#                 for res in result["results"]:
-#                     st.subheader(f"Requirement: {res['req_id']}")
-#                     st.write(res["requirement"])
-#                     st.code(res["test_cases"], language="markdown")
-                    
-#                     # Provide download link for the generated file
-#                     filename = f"{res['req_id']}.xlsx"
-#                     if Path(filename).exists():
-#                         with open(filename, "rb") as file:
-#                             st.download_button(label=f"Download {filename}", data=file, file_name=filename, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-#             else:
-#                 st.error("An error occurred while processing the file.")
-
-# if __name__ == "__main__":
-#     main()
-
-
 
 import streamlit as st
 import os
@@ -110,7 +60,7 @@ if uploaded_file is not None:
                 st.code(res["test_cases"], language="markdown")
                 
                 # Provide download link for the generated file
-                filename = f"{res['req_id']}.xlsx"
+                filename = f"./generatedTestCases/{res['req_id']}.xlsx"
                 if Path(filename).exists():
                     with open(filename, "rb") as file:
                         st.download_button(label=f"Download {filename}", data=file, file_name=filename, mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
